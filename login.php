@@ -14,6 +14,7 @@
     <input type="password"><br>
     <button type="submit">ログイン</button>
     </form>
+    <br>
         <a href="./register.php">新規登録</a>
 </body>
 </html>
