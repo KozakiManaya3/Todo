@@ -10,12 +10,12 @@
     <a href="loguin.php">ログアウト</a>
     <form action = "task_add.php" method="post">
         <h2>タスク追加</h2>
-        <input type="text" placeholder="タスク内容">
-        <input type="date">
-        <select>
-            <option>優先度(低)</option>
-            <option>中</option>
-            <option>高</option>
+        <input type="text" placeholder="タスク内容" name="task">
+        <input type="date" name="due_date">
+        <select name="priority">
+            <option value="低">優先度(低)</option>
+            <option value="中">中</option>
+            <option value="高">高</option>
         </select>
         <input type="submit" value="追加">
     </form>
