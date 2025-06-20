@@ -1,5 +1,6 @@
 <?php
 $pdo = new PDO('mysql:host=mysql322.phy.lolipop.lan;dbname=LAA1553893-todo;', 'LAA1553893', 'Todopass');
+$priority = ["低","中","高"]; 
 if (isset($_POST['search'])) {
     if ($_POST['day'] !== 'すべて' && $_POST['priority'] !== 'すべて') {
         // 期限が選択されている かつ 優先度も選択されている
@@ -38,10 +39,10 @@ foreach ($sql as $row) :?>
             <td><input type="checkbox"></td>
             <td><?= $row['task'] ?></td>
             <td><?= $row['due_date'] ?></td>
-            <td><?= $row['priority'] ?></td>
+            <td><?= $priority[$row['priority']] ?></td>
             <td>
                 <a href="task_edit.php?id=<?= $row['id'] ?>">編集</a>
-                <a href="task_delete.php?id=<?= $row['id'] ?>">削除</a>
+                <a onclick="confirm('削除しますか')" href="task_delete.php?id=<?= $row['id'] ?>">削除</a>
             </td>
         </tr>
     </tbody>
