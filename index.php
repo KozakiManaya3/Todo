@@ -10,7 +10,7 @@
 
 <body>
     <h1>Todoリスト</h1>
-    <a href="loguin.php">ログアウト</a>
+    <a href="logout.php">ログアウト</a>
     <form action="task_add.php" method="post">
         <h2>タスク追加</h2>
         <input type="text" placeholder="タスク内容" name="task">
