@@ -13,9 +13,9 @@
         <input type="text" placeholder="タスク内容" name="task">
         <input type="date" name="due_date">
         <select name="priority">
-            <option value="低">優先度(低)</option>
-            <option value="中">中</option>
-            <option value="高">高</option>
+            <option value="1">優先度(低)</option>
+            <option value="2">中</option>
+            <option value="3">高</option>
         </select>
         <input type="submit" value="追加">
     </form>
@@ -23,18 +23,19 @@
         <h2>フィルタ/検索</h2>
         <input type="text" placeholder="キーワード">
         <select>
-            <option>すべて</option>
-            <option>1日</option>
-            <option>1週間</option>
-            <option>1か月</option>
+            <option value="1">すべて</option>
+            <option value="2">1日</option>
+            <option value="3">1週間</option>
+            <option value="4">1か月</option>
         </select>
         <select>
-            <option>優先度(全て)</option>
-            <option>低</option>
-            <option>中</option>
-            <option>高</option>
+            <option value="1">優先度(全て)</option>
+            <option value="2">低</option>
+            <option value="3">中</option>
+            <option value="4">高</option>
         </select>
         <input type="submit" value="適用">
     </form>
 </body>
 </html>
+
