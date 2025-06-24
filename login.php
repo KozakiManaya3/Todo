@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="login_session.php" method="post">
+    <form action="db.php" method="post">
         <h1>ログイン</h1>
         ユーザー名:
         <input type="text" name="user_name"><br>
