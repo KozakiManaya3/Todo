@@ -8,14 +8,42 @@
 </head>
 
 <body>
-    <form action="index.php">
+    <?php
+        $pdo=new PDO('mysql:host=mysql322.phy.lolipop.lan;dbname=LAA1553893-todo;','LAA1553893','Todopass');
+        $sql = $pdo->prepare('SELECT * FROM todos WHERE id = ?');
+        $sql->execute($_POST['id']);
+
+        foreach ($sql as $row){
+            $row['id'];
+            $row['user_id'];
+            $row['task'];
+            $row['status'];
+            $row['due_date'];
+            $row['priority'];
+            $row['create_at'];
+        }
+    ?>
+    <form action="db.php" method="post">
         <h1>タスク編集</h1>
-            内容：<input type="text" name="edname"><br>
-            期限：<input type="date" name="eddate"><br>
-            優先度：<input type="select" name="edprio"><br>
-            状態：<input type="select" name="edsta">
-        <input type="submit">
+            内容：<input type="text" name="edname" value="<?= $row['task'] ?>"><br>
+            期限：<input type="date" name="eddate" value="<?= $row['due_date'] ?>"><br>
+            優先度：
+                <select name="edpr">
+                    <option value="低">低</option>
+                    <option value="中">中</option>
+                    <option value="高">高</option>
+                </select>
+            <br>
+            状態：
+                <select name="edpr" >
+                    <option value="未">未完了</option>
+                    <option value="完">完了</option>
+                </select>
+            <br>
+        <input type="submit" name="edit" value="保存">
+        <a href="index.php">キャンセル</a>
     </form>
+    
 </body>
 
 </html>
