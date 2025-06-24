@@ -10,7 +10,7 @@
     <form action="db.php" method="post">
         ユーザー名: <input type="text" name="username"><br>
         パスワード: <input type="password" name="password"><br>
-        <button type="submit">登録</button><br>
+        <button type="submit" name="register">登録</button><br>
     </form>
     <br>
     <a href="./login.php">ログインはこちら</a>
