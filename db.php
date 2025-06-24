@@ -1,6 +1,5 @@
 <?php
 session_start();
-unset($_SESSION['user']);
 $pdo=new PDO('mysql:host=mysql322.phy.lolipop.lan;dbname=LAA1553893-todo;','LAA1553893','Todopass');
 if (isset($_POST['login'])) {
     $sql = $pdo->prepare('select * from users where username=? and password=?');
@@ -21,6 +20,7 @@ if (isset($_POST['login'])) {
     $sql->execute([$_POST['username'], $_POST['password']]);
     header("Location: login.php");
 } else if (isset($_POST['edit'])) {
-    $sql = $pdo->prepare('update todos set task=?, status=? due_date=?, priority=? where id=?');
+    $sql = $pdo->prepare('update todos set task=?, status=?, due_date=?, priority=? where id=?');
     $sql->execute([$_POST['edname'], $_POST['edsta'], $_POST['eddate'], $_POST['edprio'], $_POST['id']]);
+    header("Location: index.php");
 }
