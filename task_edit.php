@@ -12,16 +12,6 @@
         $pdo=new PDO('mysql:host=mysql322.phy.lolipop.lan;dbname=LAA1553893-todo;','LAA1553893','Todopass');
         $sql = $pdo->prepare('SELECT * FROM todos WHERE id = ?');
         $sql->execute($_POST['id']);
-
-        foreach ($sql as $row){
-            $row['id'];
-            $row['user_id'];
-            $row['task'];
-            $row['status'];
-            $row['due_date'];
-            $row['priority'];
-            $row['create_at'];
-        }
     ?>
     <form action="db.php" method="post">
         <h1>タスク編集</h1>
@@ -35,7 +25,7 @@
                 </select>
             <br>
             状態：
-                <select name="edpr" >
+                <select name="edst" >
                     <option value="未">未完了</option>
                     <option value="完">完了</option>
                 </select>
