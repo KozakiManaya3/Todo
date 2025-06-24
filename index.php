@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -38,6 +39,12 @@
         </select>
         <input type="submit" value="適用">
     </form>
+    <?php
+    $pdo = new PDO('mysql:host=mysql322.phy.lolipop.lan;dbname=LAA1553893-todo;', 'LAA1553893', 'Todopass');
+    $pri = ['低', '中', '高'];
+    $sql = $pdo->prepare('select * from todos where user_id = ?');
+    $sql->execute([$_SESSION['user']['id']]);
+    ?>
     <table>
         <thead>
             <th>状態</th>
@@ -47,16 +54,18 @@
             <th>操作</th>
         </thead>
         <tbody>
-            <tr>
-                <td><input type="checkbox"></td>
-                <td>Githubの課題</td>
-                <td>2025-06-10</td>
-                <td>高</td>
-                <td>
-                    <a href="task_edit.php">編集</a>
-                    <a href="task_delete.php">削除</a>
-                </td>
-            </tr>
+            <?php foreach ($sql as $row) : ?>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td><?= $row['task'] ?></td>
+                    <td><?= $row['due_date'] ?></td>
+                    <td><?= $pri[$row['priority']] ?></td>
+                    <td>
+                        <a href="task_edit.php?id=<?= $row['id'] ?>">編集</a>
+                        <a href="task_delete.php?id=<?= $row['id'] ?>">削除</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
         </tbody>
     </table>
 </body>
