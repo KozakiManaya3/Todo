@@ -40,7 +40,7 @@
                 </select>
             <br>
 
-            <input type="hidden" name="id" value="<?php $row["id"] ?>">
+            <input type="hidden" name="id" value="<?= $row["id"] ?>">
         
         <?php endforeach ; ?>
         <input type="submit" name="edit" value="保存">
