@@ -56,7 +56,7 @@
         <tbody>
             <?php foreach ($sql as $row) : ?>
                 <tr>
-                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox" <?= $row['status'] == 'done' ? 'checked' : '' ?> onclick="location.href='task_toggle.php?id=<?= $row['id'] ?>'"></td>
                     <td><?= $row['task'] ?></td>
                     <td><?= $row['due_date'] ?></td>
                     <td><?= $pri[$row['priority']] ?></td>
