@@ -17,7 +17,7 @@
     <?php
         $pdo=new PDO('mysql:host=mysql322.phy.lolipop.lan;dbname=LAA1553893-todo;','LAA1553893','Todopass');
         $sql = $pdo->prepare('SELECT * FROM todos WHERE id = ?');
-        $sql->execute($_POST['id']);
+        $sql->execute($_REQUEST['id']);
 
         foreach ($sql as $row){
             $row['id'];
