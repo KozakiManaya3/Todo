@@ -7,6 +7,12 @@
     <title>編集画面</title>
 </head>
 
+    <?php
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
+    ?>
+
 <body>
     <?php
         $pdo=new PDO('mysql:host=mysql322.phy.lolipop.lan;dbname=LAA1553893-todo;','LAA1553893','Todopass');
