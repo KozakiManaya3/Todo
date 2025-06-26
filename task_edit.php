@@ -46,6 +46,8 @@
                     <option value="done" <?= $row['status'] === "done" ? 'selected' : '' ?> >完了</option>
                 </select>
             <br>
+
+            <input type="hidden" name="id" value="<?php $row["id"] ?>">
         
         <?php } ?>
         <input type="submit" name="edit" value="保存">
