@@ -27,7 +27,6 @@
             $row['status'];
             $row['due_date'];
             $row['priority'];
-            $row['create_at'];
     
     ?>
     <form action="db.php" method="post">
