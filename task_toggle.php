@@ -6,7 +6,7 @@ $sql->execute([$id]);
 foreach ($sql as $row) {
     $status = $row['status'] == 'todo' ? 'done' :'todo';
 }
-$sql = $pdo->prepare('update todos status=? where id=?');
+$sql = $pdo->prepare('update todos set status=? where id=?');
 $sql->execute([$status,$id]);
 
 header("Location: index.php");
