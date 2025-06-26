@@ -29,15 +29,15 @@
             期限：<input type="date" name="eddate" value="<?= $row['due_date'] ?>"><br>
             優先度：
                 <select name="edpr">
-                    <option value="0" >低</option>
-                    <option value="1">中</option>
-                    <option value="2">高</option>
+                    <option value="0" <?= $row['priority'] == 0 ? 'selected' : '' ?> >低</option>
+                    <option value="1" <?= $row['priority'] == 1 ? 'selected' : '' ?> >中</option>
+                    <option value="2" <?= $row['priority'] == 2 ? 'selected' : '' ?> >高</option>
                 </select>
             <br>
             状態：
                 <select name="edst" >
-                    <option value="未">未完了</option>
-                    <option value="完">完了</option>
+                    <option value="todo" <?= $row['status'] === "todo" ? 'selected' : '' ?> >未完了</option>
+                    <option value="done" <?= $row['status'] === "done" ? 'selected' : '' ?> >完了</option>
                 </select>
             <br>
         
