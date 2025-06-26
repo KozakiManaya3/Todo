@@ -11,7 +11,17 @@
     <?php
         $pdo=new PDO('mysql:host=mysql322.phy.lolipop.lan;dbname=LAA1553893-todo;','LAA1553893','Todopass');
         $sql = $pdo->prepare('SELECT * FROM todos WHERE id = ?');
-        $sql->execute($_POST['id']);
+        $sql->execute($_REQUEST['id']);
+
+        foreach ($sql as $row){
+            $row['id'];
+            $row['user_id'];
+            $row['task'];
+            $row['status'];
+            $row['due_date'];
+            $row['priority'];
+            $row['create_at'];
+    
     ?>
     <form action="db.php" method="post">
         <h1>タスク編集</h1>
@@ -19,9 +29,9 @@
             期限：<input type="date" name="eddate" value="<?= $row['due_date'] ?>"><br>
             優先度：
                 <select name="edpr">
-                    <option value="低">低</option>
-                    <option value="中">中</option>
-                    <option value="高">高</option>
+                    <option value="0" >低</option>
+                    <option value="1">中</option>
+                    <option value="2">高</option>
                 </select>
             <br>
             状態：
@@ -30,6 +40,8 @@
                     <option value="完">完了</option>
                 </select>
             <br>
+        
+        <?php } ?>
         <input type="submit" name="edit" value="保存">
         <a href="index.php">キャンセル</a>
     </form>
