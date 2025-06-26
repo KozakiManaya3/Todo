@@ -24,26 +24,42 @@
     </form>
     <form action="index.php" method="post">
         <h2>フィルタ/検索</h2>
-        <input type="text" placeholder="キーワード">
-        <select>
+        <input type="text" placeholder="キーワード" name="keyword">
+        <select name="date">
             <option value="すべて">すべて</option>
             <option value="1">1日</option>
             <option value="7">1週間</option>
             <option value="31">1か月</option>
         </select>
-        <select>
+        <select name="priority">
             <option value="すべて">優先度(全て)</option>
             <option value="0">低</option>
             <option value="1">中</option>
             <option value="2">高</option>
         </select>
-        <input type="submit" value="適用">
+        <input type="submit" value="適用" name="search">
     </form>
     <?php
     $pdo = new PDO('mysql:host=mysql322.phy.lolipop.lan;dbname=LAA1553893-todo;', 'LAA1553893', 'Todopass');
     $pri = ['低', '中', '高'];
-    $sql = $pdo->prepare('select * from todos where user_id = ?');
-    $sql->execute([$_SESSION['user']['id']]);
+    if (isset($_REQUEST['search'])) {
+        if ($_POST['date'] == 'すべて' && $_POST['priority'] == 'すべて') {
+            $sql = $pdo->prepare('select * from todos where task like ? and user_id = ?');
+            $sql->execute(['%' . $_POST['keyword'] . '%', $_SESSION['user']['id']]);
+        } else if ($_POST['date'] !== 'すべて' && $_POST['priority'] == 'すべて') {
+            $sql = $pdo->prepare('select * from todos where task like ? and datediff(due_date, current_date)<=? and user_id=?');
+            $sql->execute([$_POST['keyword'], $_POST['date'], $_SESSION['user']['id']]);
+        } else if ($_POST['date'] == 'すべて' && $_POST['priority'] !== 'すべて') {
+            $sql = $pdo->prepare('select * from todos where task like ? and priority = ? and user_id=?');
+            $sql->execute([$_POST['keyword'], $_POST['priority'], $_SESSION['user']['id']]);
+        } else if ($_POST['date'] !== 'すべて' && $_POST['priority'] == 'すべて') {
+            $sql = $pdo->prepare('select * from todos where task like ? and datediff(due_date, current_date)<=? and  priority = ? and user_id=?');
+            $sql->execute([$_POST['keyword'], $_POST['date'], $_POST['priority'], $_SESSION['user']['id']]);
+        }
+    } else {
+        $sql = $pdo->prepare('select * from todos where user_id = ?');
+        $sql->execute([$_SESSION['user']['id']]);
+    }
     ?>
     <table>
         <thead>
