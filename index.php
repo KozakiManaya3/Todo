@@ -48,13 +48,13 @@
             $sql->execute(['%' . $_POST['keyword'] . '%', $_SESSION['user']['id']]);
         } else if ($_POST['date'] !== 'すべて' && $_POST['priority'] == 'すべて') {
             $sql = $pdo->prepare('select * from todos where task like ? and datediff(due_date, current_date)<=? and user_id=?');
-            $sql->execute([$_POST['keyword'], $_POST['date'], $_SESSION['user']['id']]);
+            $sql->execute(['%' . $_POST['keyword'] . '%', $_POST['date'], $_SESSION['user']['id']]);
         } else if ($_POST['date'] == 'すべて' && $_POST['priority'] !== 'すべて') {
             $sql = $pdo->prepare('select * from todos where task like ? and priority = ? and user_id=?');
-            $sql->execute([$_POST['keyword'], $_POST['priority'], $_SESSION['user']['id']]);
+            $sql->execute(['%' . $_POST['keyword'] . '%', $_POST['priority'], $_SESSION['user']['id']]);
         } else if ($_POST['date'] !== 'すべて' && $_POST['priority'] == 'すべて') {
             $sql = $pdo->prepare('select * from todos where task like ? and datediff(due_date, current_date)<=? and  priority = ? and user_id=?');
-            $sql->execute([$_POST['keyword'], $_POST['date'], $_POST['priority'], $_SESSION['user']['id']]);
+            $sql->execute(['%' . $_POST['keyword'] . '%', $_POST['date'], $_POST['priority'], $_SESSION['user']['id']]);
         }
     } else {
         $sql = $pdo->prepare('select * from todos where user_id = ?');
