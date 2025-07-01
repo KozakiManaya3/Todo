@@ -26,7 +26,7 @@ foreach($sql as $row){
     <h1>Todoリスト</h1>
     <p><?= $_SESSION['user']['name'] ?>さん</p>
     <a href="logout.php">ログアウト</a>
-    <p>進捗:<?= $all_task == 0 ? 0 : $done_task/$all_task * 100 ?>%</p>
+    <p>進捗:<?= $all_task == 0 ? 0 : round($done_task/$all_task * 100) ?>%</p>
     <meter min="0" max="100" value="<?= $all_task == 0 ? 0 : $done_task/$all_task * 100 ?>"></meter>
     <form action="task_add.php" method="post">
         <h2>タスク追加</h2>
