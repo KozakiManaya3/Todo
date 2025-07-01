@@ -92,8 +92,8 @@ foreach($sql as $row){
                     <td><span class="<?= $row['status'] == 'done' ? "done" : ""?>"><?= $row['due_date'] ?></span></td>
                     <td><span class="<?= $row['status'] == 'done' ? "done" : ""?>"><?= $pri[$row['priority']] ?></span></td>
                     <td>
-                        <a href="task_edit.php?id=<?= $row['id'] ?>" onclick="return confirm('削除しますか？')'">編集</a>
-                        <a href="task_delete.php?id=<?= $row['id'] ?>">削除</a>
+                        <a href="task_edit.php?id=<?= $row['id'] ?>">編集</a>
+                        <a onclick="return confirm('削除しますか？')" href="task_delete.php?id=<?= $row['id'] ?>">削除</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
