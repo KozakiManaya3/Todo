@@ -7,8 +7,8 @@ $done_task = 0;
 $sql = $pdo->prepare('select count(*) as  alltask, sum(status = "done") as donetask from todos where user_id = ?');
 $sql->execute([$_SESSION['user']['id']]);
 foreach($sql as $row){
-    $all_task = $row('alltask');
-    $done_task = $row('donetask');
+    $all_task = $row['alltask'];
+    $done_task = $row['donetask'];
 }
 
 ?>
