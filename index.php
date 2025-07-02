@@ -6,7 +6,7 @@ $all_task = 0;
 $done_task = 0;
 $sql = $pdo->prepare('select count(*) as  alltask, sum(status = "done") as donetask from todos where user_id = ?');
 $sql->execute([$_SESSION['user']['id']]);
-foreach($sql as $row){
+foreach ($sql as $row) {
     $all_task = $row['alltask'];
     $done_task = $row['donetask'];
 }
@@ -23,11 +23,15 @@ foreach($sql as $row){
 </head>
 
 <body>
-    <h1>Todoリスト</h1>
-    <p><?= $_SESSION['user']['name'] ?>さん</p>
-    <a href="logout.php">ログアウト</a>
-    <p>進捗:<?= $all_task == 0 ? 0 : round($done_task/$all_task * 100) ?>%</p>
-    <meter min="0" max="100" value="<?= $all_task == 0 ? 0 : $done_task/$all_task * 100 ?>"></meter>
+    <header id="index-header">
+        <h1>Todoリスト</h1>
+        <div class="header-item">
+            <p><?= $_SESSION['user']['name'] ?>さん</p>
+            <a href="logout.php">ログアウト</a>
+        </div>
+    </header>
+    <p class="progress">進捗:<?= $all_task == 0 ? 0 : round($done_task / $all_task * 100) ?>%</p>
+    <meter min="0" max="100" value="<?= $all_task == 0 ? 0 : $done_task / $all_task * 100 ?>"></meter>
     <form action="task_add.php" method="post">
         <h2>タスク追加</h2>
         <input type="text" placeholder="タスク内容" name="task">
@@ -88,9 +92,9 @@ foreach($sql as $row){
             <?php foreach ($sql as $row) : ?>
                 <tr>
                     <td><input type="checkbox" <?= $row['status'] == 'done' ? 'checked' : '' ?> onclick="location.href='task_toggle.php?id=<?= $row['id'] ?>'"></td>
-                    <td><span class="<?= $row['status'] == 'done' ? "done" : ""?>"><?= $row['task'] ?></span></td>
-                    <td><span class="<?= $row['status'] == 'done' ? "done" : ""?>"><?= $row['due_date'] ?></span></td>
-                    <td><span class="<?= $row['status'] == 'done' ? "done" : ""?>"><?= $pri[$row['priority']] ?></span></td>
+                    <td><span class="<?= $row['status'] == 'done' ? "done" : "" ?>"><?= $row['task'] ?></span></td>
+                    <td><span class="<?= $row['status'] == 'done' ? "done" : "" ?>"><?= $row['due_date'] ?></span></td>
+                    <td><span class="<?= $row['status'] == 'done' ? "done" : "" ?>"><?= $pri[$row['priority']] ?></span></td>
                     <td>
                         <a href="task_edit.php?id=<?= $row['id'] ?>">編集</a>
                         <a onclick="return confirm('削除しますか？')" href="task_delete.php?id=<?= $row['id'] ?>">削除</a>
