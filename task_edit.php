@@ -57,7 +57,7 @@ error_reporting(E_ALL);
             <input type="hidden" name="id" value="<?= $row["id"] ?>">
 
         <?php endforeach; ?>
-        <input type="submit" name="edit" value="保存">
+        <input type="submit" name="edit" value="保存"><br>
         <a href="index.php">キャンセル</a>
         </form>
 
