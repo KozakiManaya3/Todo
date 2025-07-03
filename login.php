@@ -12,9 +12,9 @@
     <form action="db.php" method="post">
         <h1>ログイン</h1>
         ユーザー名:
-        <input type="text" name="user_name"><br>
+        <input type="text" name="user_name" value="Kozaki"><br>
         パスワード:
-        <input type="password" name="password"><br>
+        <input type="password" name="password" value="aaa"><br>
         <button type="submit" name="login">ログイン</button>
     </form>
     <br>

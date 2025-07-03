@@ -36,7 +36,7 @@ meter {
     height: 40px;
 }
 
-form {
+.index-form {
     box-sizing: border-box;
     width: 100%;
     background-color: #fff;
@@ -44,7 +44,7 @@ form {
     margin-bottom: 10px;
     padding: 5px 10px;
 }
-form h2 {
+.index-form h2 {
     margin-top: 5px;
 }
 

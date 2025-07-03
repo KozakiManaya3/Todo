@@ -32,7 +32,7 @@ foreach ($sql as $row) {
     </header>
     <p class="progress">進捗:<?= $all_task == 0 ? 0 : round($done_task / $all_task * 100) ?>%</p>
     <meter min="0" max="100" value="<?= $all_task == 0 ? 0 : $done_task / $all_task * 100 ?>"></meter>
-    <form action="task_add.php" method="post">
+    <form action="task_add.php" method="post" name="index-form">
         <h2>タスク追加</h2>
         <input type="text" placeholder="タスク内容" name="task">
         <input type="date" name="due_date">
@@ -43,7 +43,7 @@ foreach ($sql as $row) {
         </select>
         <input type="submit" value="追加">
     </form>
-    <form action="index.php" method="post">
+    <form action="index.php" method="post" name="index-form">
         <h2>フィルタ/検索</h2>
         <input type="text" placeholder="キーワード" name="keyword">
         <select name="date">
